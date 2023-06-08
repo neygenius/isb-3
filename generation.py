@@ -13,7 +13,6 @@ def gen_symmetric_key(len: int) -> bytes:
     :param len: длина ключа
     :return: ключ
     """
-    key = bytes()
     if len == 128 or len == 192 or len == 256:
         key = os.urandom(int(len/8))
         logging.info('Ключ для симметричного шифрования сгенерирован')
