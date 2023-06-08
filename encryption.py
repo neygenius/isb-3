@@ -26,7 +26,7 @@ def symmetric_encrypt(key: bytes, text: bytes, len: int) -> bytes:
         encrypted_text = encryptor.update(padded_text) + encryptor.finalize()
         logging.info(f'Текст зашифрован алгоритмом Camellia')
     except OSError as err:
-        logging.warning(f'{err} Ошибка при симметричном шифровании')
+        logging.warning(f'{err} Ошибка при симметричном шифровании!')
     return iv + encrypted_text
 
 
@@ -42,5 +42,5 @@ def asymmetric_encrypt(public_key, text: bytes) -> bytes:
                                                                algorithm=hashes.SHA256(), label=None))
         logging.info(f'Текст зашифрован алгоритмом асимметричного шифрования')
     except OSError as err:
-        logging.warning(f'{err} Ошибка при асимметричном шифровании')
+        logging.warning(f'{err} Ошибка при асимметричном шифровании!')
     return encrypted_text
