@@ -1,4 +1,19 @@
 import logging
+import json
+
+def load_settings(file_name: str) -> dict:
+    """
+    Функция загрузки файла настроек
+    :param file_name: название файла
+    :return: настройки
+    """
+    try:
+        with open(file_name) as json_file:
+            settings = json.load(json_file)
+        logging.info(f'Настройки загружены из {file_name}')
+    except OSError as err:
+        logging.warning(f'{err} Ошибка при загрузке настроек из {file_name}')
+    return settings
 
 
 def read_text(file_name: str) -> bytes:
