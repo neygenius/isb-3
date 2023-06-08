@@ -1,6 +1,6 @@
 import os
 from cryptography.hazmat.primitives import padding, hashes
-from cryptography.hazmat.primitives.asymmetric import padding
+from cryptography.hazmat.primitives.asymmetric import padding as aspadding
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
 import logging
 
@@ -38,7 +38,7 @@ def asymmetric_encrypt(public_key, text: bytes) -> bytes:
     :return: зашифрованный текст
     """
     try:
-        encrypted_text = public_key.encrypt(text, padding.OAEP(mgf=padding.MGF1(algorithm=hashes.SHA256()),
+        encrypted_text = public_key.encrypt(text, aspadding.OAEP(mgf=aspadding.MGF1(algorithm=hashes.SHA256()),
                                                                algorithm=hashes.SHA256(), label=None))
         logging.info(f'Текст зашифрован алгоритмом асимметричного шифрования')
     except OSError as err:

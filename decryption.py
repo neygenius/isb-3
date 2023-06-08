@@ -1,5 +1,5 @@
 from cryptography.hazmat.primitives import padding, hashes
-from cryptography.hazmat.primitives.asymmetric import padding
+from cryptography.hazmat.primitives.asymmetric import padding as aspadding
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
 from cryptography.hazmat.primitives.serialization import load_pem_private_key
 import logging
@@ -66,7 +66,7 @@ def asymmetric_decrypt(private_key, cipher_text: bytes) -> bytes:
     """
     try:
         decrypted_text = private_key.decrypt(cipher_text,
-                                             padding.OAEP(mgf=padding.MGF1(algorithm=hashes.SHA256()),
+                                             aspadding.OAEP(mgf=aspadding.MGF1(algorithm=hashes.SHA256()),
                                                           algorithm=hashes.SHA256(), label=None))
         logging.info(f'Асимметрично зашифрованный текст расшифрован')
     except OSError as err:

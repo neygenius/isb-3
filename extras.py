@@ -23,7 +23,7 @@ def read_text(file_name: str) -> bytes:
     :return: текст
     """
     try:
-        with open(file_name, mode='rb') as text_file:
+        with open(file_name, 'rb') as text_file:
             text = text_file.read()
         logging.info(f'{file_name} прочитан')
     except OSError as err:
@@ -39,7 +39,7 @@ def write_text(text: bytes, file_name: str) -> None:
     :return: None
     """
     try:
-        with open(file_name, mode='wb') as text_file:
+        with open(file_name, 'wb') as text_file:
             text_file.write(text)
         logging.info(f'Текст записан в {file_name}')
     except OSError as err:
