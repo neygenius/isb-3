@@ -1,6 +1,7 @@
 import logging
 import json
 
+
 def load_settings(file_name: str) -> dict:
     """
     Функция загрузки файла настроек
